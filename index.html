@@ -38,31 +38,9 @@
     </header>
 
     <main>
-
-      <!-- ===== AÇÕES GERAIS ===== -->
       <section class="panel">
         <button onclick="openCreateCharacter()">➕ Criar Personagem</button>
       </section>
-
-      <!-- ===== PLAYER ===== -->
-      <section class="panel player-only">
-        <h3>🧑‍💼 Ficha do Personagem</h3>
-        <p>(em breve)</p>
-      </section>
-
-      <!-- ===== MESTRE ===== -->
-      <section class="panel master-only">
-        <h3>🧙 Painel do Mestre</h3>
-        <p>Visualização completa da sessão</p>
-      </section>
-
-      <!-- ===== COMUM ===== -->
-      <section class="panel">
-        <h3>🎲 Rolagem de Dados</h3>
-        <button onclick="rollD20()">D20</button>
-        <p id="dice-result">—</p>
-      </section>
-
     </main>
   </div>
 
@@ -70,47 +48,78 @@
   <div id="create-character-modal" class="modal hidden">
     <div class="modal-content">
 
-      <h2>🧬 Atributos (1/4)</h2>
-      <p>Pontos disponíveis: <strong id="points">4</strong></p>
+      <!-- ===== ATRIBUTOS ===== -->
+      <div id="step-attributes">
+        <h2>🧬 Atributos (1/4)</h2>
+        <p>Pontos disponíveis: <strong id="points">4</strong></p>
 
-      <div class="attribute">
-        <span>Força</span>
-        <button onclick="changeAttr('forca', -1)">−</button>
-        <span id="forca">1</span>
-        <button onclick="changeAttr('forca', 1)">+</button>
+        <div class="attribute">
+          <span>Força</span>
+          <button onclick="changeAttr('forca', -1)">−</button>
+          <span id="forca">1</span>
+          <button onclick="changeAttr('forca', 1)">+</button>
+        </div>
+
+        <div class="attribute">
+          <span>Agilidade</span>
+          <button onclick="changeAttr('agilidade', -1)">−</button>
+          <span id="agilidade">1</span>
+          <button onclick="changeAttr('agilidade', 1)">+</button>
+        </div>
+
+        <div class="attribute">
+          <span>Intelecto</span>
+          <button onclick="changeAttr('intelecto', -1)">−</button>
+          <span id="intelecto">1</span>
+          <button onclick="changeAttr('intelecto', 1)">+</button>
+        </div>
+
+        <div class="attribute">
+          <span>Presença</span>
+          <button onclick="changeAttr('presenca', -1)">−</button>
+          <span id="presenca">1</span>
+          <button onclick="changeAttr('presenca', 1)">+</button>
+        </div>
+
+        <div class="attribute">
+          <span>Vigor</span>
+          <button onclick="changeAttr('vigor', -1)">−</button>
+          <span id="vigor">1</span>
+          <button onclick="changeAttr('vigor', 1)">+</button>
+        </div>
+
+        <div class="modal-actions">
+          <button id="next-attributes" disabled onclick="goToOrigin()">Próximo</button>
+          <button onclick="closeCreateCharacter()">Cancelar</button>
+        </div>
       </div>
 
-      <div class="attribute">
-        <span>Agilidade</span>
-        <button onclick="changeAttr('agilidade', -1)">−</button>
-        <span id="agilidade">1</span>
-        <button onclick="changeAttr('agilidade', 1)">+</button>
-      </div>
+      <!-- ===== ORIGEM ===== -->
+      <div id="step-origin" class="hidden">
+        <h2>🌍 Origem (2/4)</h2>
 
-      <div class="attribute">
-        <span>Intelecto</span>
-        <button onclick="changeAttr('intelecto', -1)">−</button>
-        <span id="intelecto">1</span>
-        <button onclick="changeAttr('intelecto', 1)">+</button>
-      </div>
+        <div class="origin" onclick="selectOrigin('Academico')">
+          <strong>Acadêmico</strong>
+          <p>Perícias: Ciências, Investigação</p>
+          <small>Saber é Poder: 2 PE → +5 em testes de Intelecto</small>
+        </div>
 
-      <div class="attribute">
-        <span>Presença</span>
-        <button onclick="changeAttr('presenca', -1)">−</button>
-        <span id="presenca">1</span>
-        <button onclick="changeAttr('presenca', 1)">+</button>
-      </div>
+        <div class="origin" onclick="selectOrigin('Agente de Saúde')">
+          <strong>Agente de Saúde</strong>
+          <p>Perícias: Intuição, Medicina</p>
+          <small>Técnica Medicinal: soma Intelecto na cura</small>
+        </div>
 
-      <div class="attribute">
-        <span>Vigor</span>
-        <button onclick="changeAttr('vigor', -1)">−</button>
-        <span id="vigor">1</span>
-        <button onclick="changeAttr('vigor', 1)">+</button>
-      </div>
+        <div class="origin" onclick="selectOrigin('Amnésico')">
+          <strong>Amnésico</strong>
+          <p>Perícias: Duas à escolha do mestre</p>
+          <small>Vislumbres do Passado: 1x por sessão</small>
+        </div>
 
-      <div class="modal-actions">
-        <button id="next-step" disabled>Próximo</button>
-        <button onclick="closeCreateCharacter()">Cancelar</button>
+        <div class="modal-actions">
+          <button id="next-origin" disabled>Próximo</button>
+          <button onclick="backToAttributes()">Voltar</button>
+        </div>
       </div>
 
     </div>

@@ -129,3 +129,16 @@ main {
   justify-content: space-between;
   margin-top: 15px;
 }
+
+.origin {
+  border: 1px solid #333;
+  padding: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.origin.selected {
+  border-color: #7b1e1e;
+  background: #1a0f0f;
+}
+
