@@ -30,7 +30,6 @@
 
   <!-- ================= APP ================= -->
   <div id="app" class="hidden">
-
     <header>
       <h2>🕯️ Sala de Investigação</h2>
       <span id="user-info"></span>
@@ -53,40 +52,11 @@
         <h2>🧬 Atributos (1/4)</h2>
         <p>Pontos disponíveis: <strong id="points">4</strong></p>
 
-        <div class="attribute">
-          <span>Força</span>
-          <button onclick="changeAttr('forca', -1)">−</button>
-          <span id="forca">1</span>
-          <button onclick="changeAttr('forca', 1)">+</button>
-        </div>
-
-        <div class="attribute">
-          <span>Agilidade</span>
-          <button onclick="changeAttr('agilidade', -1)">−</button>
-          <span id="agilidade">1</span>
-          <button onclick="changeAttr('agilidade', 1)">+</button>
-        </div>
-
-        <div class="attribute">
-          <span>Intelecto</span>
-          <button onclick="changeAttr('intelecto', -1)">−</button>
-          <span id="intelecto">1</span>
-          <button onclick="changeAttr('intelecto', 1)">+</button>
-        </div>
-
-        <div class="attribute">
-          <span>Presença</span>
-          <button onclick="changeAttr('presenca', -1)">−</button>
-          <span id="presenca">1</span>
-          <button onclick="changeAttr('presenca', 1)">+</button>
-        </div>
-
-        <div class="attribute">
-          <span>Vigor</span>
-          <button onclick="changeAttr('vigor', -1)">−</button>
-          <span id="vigor">1</span>
-          <button onclick="changeAttr('vigor', 1)">+</button>
-        </div>
+        <div class="attribute"><span>Força</span><button onclick="changeAttr('forca', -1)">−</button><span id="forca">1</span><button onclick="changeAttr('forca', 1)">+</button></div>
+        <div class="attribute"><span>Agilidade</span><button onclick="changeAttr('agilidade', -1)">−</button><span id="agilidade">1</span><button onclick="changeAttr('agilidade', 1)">+</button></div>
+        <div class="attribute"><span>Intelecto</span><button onclick="changeAttr('intelecto', -1)">−</button><span id="intelecto">1</span><button onclick="changeAttr('intelecto', 1)">+</button></div>
+        <div class="attribute"><span>Presença</span><button onclick="changeAttr('presenca', -1)">−</button><span id="presenca">1</span><button onclick="changeAttr('presenca', 1)">+</button></div>
+        <div class="attribute"><span>Vigor</span><button onclick="changeAttr('vigor', -1)">−</button><span id="vigor">1</span><button onclick="changeAttr('vigor', 1)">+</button></div>
 
         <div class="modal-actions">
           <button id="next-attributes" disabled onclick="goToOrigin()">Próximo</button>
@@ -98,27 +68,38 @@
       <div id="step-origin" class="hidden">
         <h2>🌍 Origem (2/4)</h2>
 
-        <div class="origin" onclick="selectOrigin('Academico')">
-          <strong>Acadêmico</strong>
-          <p>Perícias: Ciências, Investigação</p>
-          <small>Saber é Poder: 2 PE → +5 em testes de Intelecto</small>
+        <div class="origin" onclick="selectOrigin(event, 'Acadêmico')"><strong>Acadêmico</strong></div>
+        <div class="origin" onclick="selectOrigin(event, 'Agente de Saúde')"><strong>Agente de Saúde</strong></div>
+        <div class="origin" onclick="selectOrigin(event, 'Amnésico')"><strong>Amnésico</strong></div>
+
+        <div class="modal-actions">
+          <button id="next-origin" disabled onclick="goToClass()">Próximo</button>
+          <button onclick="backToAttributes()">Voltar</button>
+        </div>
+      </div>
+
+      <!-- ===== CLASSE ===== -->
+      <div id="step-class" class="hidden">
+        <h2>🧙 Classe (3/4)</h2>
+
+        <div class="origin" onclick="selectClass(event, 'Combatente')">
+          <strong>Combatente</strong>
+          <p>Especialista em combate físico</p>
         </div>
 
-        <div class="origin" onclick="selectOrigin('Agente de Saúde')">
-          <strong>Agente de Saúde</strong>
-          <p>Perícias: Intuição, Medicina</p>
-          <small>Técnica Medicinal: soma Intelecto na cura</small>
+        <div class="origin" onclick="selectClass(event, 'Especialista')">
+          <strong>Especialista</strong>
+          <p>Investigação e versatilidade</p>
         </div>
 
-        <div class="origin" onclick="selectOrigin('Amnésico')">
-          <strong>Amnésico</strong>
-          <p>Perícias: Duas à escolha do mestre</p>
-          <small>Vislumbres do Passado: 1x por sessão</small>
+        <div class="origin" onclick="selectClass(event, 'Ocultista')">
+          <strong>Ocultista</strong>
+          <p>Rituais e poderes paranormais</p>
         </div>
 
         <div class="modal-actions">
-          <button id="next-origin" disabled>Próximo</button>
-          <button onclick="backToAttributes()">Voltar</button>
+          <button id="next-class" disabled>Próximo</button>
+          <button onclick="backToOrigin()">Voltar</button>
         </div>
       </div>
 
