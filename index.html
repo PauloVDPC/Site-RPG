@@ -82,24 +82,31 @@
       <div id="step-class" class="hidden">
         <h2>🧙 Classe (3/4)</h2>
 
-        <div class="origin" onclick="selectClass(event, 'Combatente')">
-          <strong>Combatente</strong>
-          <p>Especialista em combate físico</p>
-        </div>
-
-        <div class="origin" onclick="selectClass(event, 'Especialista')">
-          <strong>Especialista</strong>
-          <p>Investigação e versatilidade</p>
-        </div>
-
-        <div class="origin" onclick="selectClass(event, 'Ocultista')">
-          <strong>Ocultista</strong>
-          <p>Rituais e poderes paranormais</p>
-        </div>
+        <div class="origin" onclick="selectClass(event, 'Combatente')"><strong>Combatente</strong></div>
+        <div class="origin" onclick="selectClass(event, 'Especialista')"><strong>Especialista</strong></div>
+        <div class="origin" onclick="selectClass(event, 'Ocultista')"><strong>Ocultista</strong></div>
 
         <div class="modal-actions">
-          <button id="next-class" disabled>Próximo</button>
+          <button id="next-class" disabled onclick="goToFinal()">Próximo</button>
           <button onclick="backToOrigin()">Voltar</button>
+        </div>
+      </div>
+
+      <!-- ===== TOQUES FINAIS ===== -->
+      <div id="step-final" class="hidden">
+        <h2>✨ Toques Finais (4/4)</h2>
+
+        <input id="char-name" placeholder="Nome do Personagem" />
+        <input id="player-name" placeholder="Nome do Jogador" />
+
+        <textarea id="appearance" placeholder="Aparência"></textarea>
+        <textarea id="personality" placeholder="Personalidade"></textarea>
+        <textarea id="history" placeholder="Histórico"></textarea>
+        <textarea id="goal" placeholder="Objetivo"></textarea>
+
+        <div class="modal-actions">
+          <button onclick="finishCharacter()">Finalizar</button>
+          <button onclick="backToClass()">Voltar</button>
         </div>
       </div>
 

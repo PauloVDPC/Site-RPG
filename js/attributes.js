@@ -74,24 +74,36 @@ function selectClass(event, nome) {
 /* ===== NAVEGAÇÃO ===== */
 
 function showStep(step) {
-  ["attributes", "origin", "class"].forEach(s =>
+  ["attributes", "origin", "class", "final"].forEach(s =>
     document.getElementById(`step-${s}`).classList.add("hidden")
   );
   document.getElementById(`step-${step}`).classList.remove("hidden");
 }
 
-function goToOrigin() {
-  showStep("origin");
-}
+function goToOrigin() { showStep("origin"); }
+function goToClass() { showStep("class"); }
+function goToFinal() { showStep("final"); }
 
-function goToClass() {
-  showStep("class");
-}
+function backToAttributes() { showStep("attributes"); }
+function backToOrigin() { showStep("origin"); }
+function backToClass() { showStep("class"); }
 
-function backToAttributes() {
-  showStep("attributes");
-}
+/* ===== FINALIZAÇÃO ===== */
 
-function backToOrigin() {
-  showStep("origin");
+function finishCharacter() {
+  const character = {
+    atributos,
+    origem: origemSelecionada,
+    classe: classeSelecionada,
+    nome: document.getElementById("char-name").value,
+    jogador: document.getElementById("player-name").value,
+    aparencia: document.getElementById("appearance").value,
+    personalidade: document.getElementById("personality").value,
+    historico: document.getElementById("history").value,
+    objetivo: document.getElementById("goal").value
+  };
+
+  localStorage.setItem("personagem", JSON.stringify(character));
+  alert("Personagem criado com sucesso!");
+  closeCreateCharacter();
 }
