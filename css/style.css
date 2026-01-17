@@ -1,3 +1,147 @@
+* {
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  margin: 0;
+  background: #0d0d0d;
+  color: #eaeaea;
+}
+
+h1, h2, h3 {
+  margin: 0 0 10px;
+}
+
+button {
+  background: #7b1e1e;
+  border: none;
+  color: #fff;
+  padding: 10px 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #a83232;
+}
+
+input {
+  padding: 8px;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.screen {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.roles {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 10px;
+}
+
+.hidden {
+  display: none;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #111;
+  padding: 10px 20px;
+  border-bottom: 1px solid #222;
+}
+
+main {
+  padding: 20px;
+  display: grid;
+  gap: 20px;
+}
+
+.panel {
+  background: #141414;
+  border: 1px solid #222;
+  padding: 15px;
+}
+
+/* CONTROLE DE PAPEL */
+.master-only,
+.player-only {
+  display: none;
+}
+
+.is-master .master-only {
+  display: block;
+}
+
+.is-player .player-only {
+  display: block;
+}
+
+.logout {
+  background: #333;
+}
+
+/* ================= MODAL ================= */
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* 🔥 REGRA QUE RESOLVE O PROBLEMA */
+.modal.hidden {
+  display: none;
+}
+
+.modal-content {
+  background: #111;
+  border: 1px solid #333;
+  padding: 20px;
+  width: 320px;
+}
+
+.attribute {
+  display: grid;
+  grid-template-columns: 1fr auto auto auto;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.attribute button {
+  width: 32px;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.origin {
+  border: 1px solid #333;
+  padding: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.origin.selected {
+  border-color: #7b1e1e;
+  background: #1a0f0f;
+}
+
 textarea {
   width: 100%;
   min-height: 60px;
@@ -7,3 +151,5 @@ textarea {
   color: #eaeaea;
   border: 1px solid #333;
 }
+
+
