@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Ordem Paranormal — Sala de Investigação</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ================= LOGIN ================= -->
+  <div id="login-screen" class="screen">
+    <h1>🕯️ Ordem Paranormal</h1>
+    <p>Sala de Investigação</p>
+
+    <input id="username" type="text" placeholder="Nome do agente" />
+
+    <div class="roles">
+      <label>
+        <input type="radio" name="role" value="player" checked />
+        Jogador
+      </label>
+      <label>
+        <input type="radio" name="role" value="master" />
+        Mestre
+      </label>
+    </div>
+
+    <button onclick="handleLogin()">Entrar</button>
+  </div>
+
+  <!-- ================= APP ================= -->
+  <div id="app" class="hidden">
+
+    <header>
+      <h2>🕯️ Sala de Investigação</h2>
+      <span id="user-info"></span>
+      <button class="logout" onclick="logout()">Sair</button>
+    </header>
+
+    <main>
+
+      <!-- ===== AÇÕES GERAIS ===== -->
+      <section class="panel">
+        <button onclick="openCreateCharacter()">➕ Criar Personagem</button>
+      </section>
+
+      <!-- ===== PLAYER ===== -->
+      <section class="panel player-only">
+        <h3>🧑‍💼 Ficha do Personagem</h3>
+        <p>(em breve)</p>
+      </section>
+
+      <!-- ===== MESTRE ===== -->
+      <section class="panel master-only">
+        <h3>🧙 Painel do Mestre</h3>
+        <p>Visualização completa da sessão</p>
+      </section>
+
+      <!-- ===== COMUM ===== -->
+      <section class="panel">
+        <h3>🎲 Rolagem de Dados</h3>
+        <button onclick="rollD20()">D20</button>
+        <p id="dice-result">—</p>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- ================= MODAL: CRIAR PERSONAGEM ================= -->
+  <div id="create-character-modal" class="modal hidden">
+    <div class="modal-content">
+
+      <h2>🧬 Atributos (1/4)</h2>
+      <p>Pontos disponíveis: <strong id="points">4</strong></p>
+
+      <div class="attribute">
+        <span>Força</span>
+        <button onclick="changeAttr('forca', -1)">−</button>
+        <span id="forca">1</span>
+        <button onclick="changeAttr('forca', 1)">+</button>
+      </div>
+
+      <div class="attribute">
+        <span>Agilidade</span>
+        <button onclick="changeAttr('agilidade', -1)">−</button>
+        <span id="agilidade">1</span>
+        <button onclick="changeAttr('agilidade', 1)">+</button>
+      </div>
+
+      <div class="attribute">
+        <span>Intelecto</span>
+        <button onclick="changeAttr('intelecto', -1)">−</button>
+        <span id="intelecto">1</span>
+        <button onclick="changeAttr('intelecto', 1)">+</button>
+      </div>
+
+      <div class="attribute">
+        <span>Presença</span>
+        <button onclick="changeAttr('presenca', -1)">−</button>
+        <span id="presenca">1</span>
+        <button onclick="changeAttr('presenca', 1)">+</button>
+      </div>
+
+      <div class="attribute">
+        <span>Vigor</span>
+        <button onclick="changeAttr('vigor', -1)">−</button>
+        <span id="vigor">1</span>
+        <button onclick="changeAttr('vigor', 1)">+</button>
+      </div>
+
+      <div class="modal-actions">
+        <button id="next-step" disabled>Próximo</button>
+        <button onclick="closeCreateCharacter()">Cancelar</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ================= SCRIPTS ================= -->
+  <script src="js/auth.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/attributes.js"></script>
+
+</body>
+</html>
