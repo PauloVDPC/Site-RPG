@@ -49,10 +49,10 @@
 
   <!-- ===== MODAL CRIAÇÃO ===== -->
   <div id="create-character-modal" class="modal hidden">
-    <div class="modal-content">
+    <div class="modal-content cc-modal">
 
       <!-- ===== ATRIBUTOS ===== -->
-      <div id="step-attributes">
+      <div id="step-attributes" class="cc-step">
         <h2>Atributos (1/4)</h2>
         <p>Pontos disponíveis: <strong id="points">4</strong></p>
 
@@ -69,7 +69,7 @@
       </div>
 
       <!-- ===== ORIGEM ===== -->
-      <div id="step-origin" class="hidden">
+      <div id="step-origin" class="cc-step hidden">
         <h2>Origem (2/4)</h2>
 
         <div class="origin" onclick="selectOrigin(event,'Acadêmico')">Acadêmico</div>
@@ -83,7 +83,7 @@
       </div>
 
       <!-- ===== CLASSE ===== -->
-      <div id="step-class" class="hidden">
+      <div id="step-class" class="cc-step hidden">
         <h2>Classe (3/4)</h2>
 
         <div class="origin" onclick="selectClass(event,'Combatente')">Combatente</div>
@@ -97,7 +97,7 @@
       </div>
 
       <!-- ===== TOQUES FINAIS ===== -->
-      <div id="step-final" class="hidden">
+      <div id="step-final" class="cc-step hidden">
         <h2>Toques Finais (4/4)</h2>
 
         <input id="char-name" placeholder="Nome do Personagem" />

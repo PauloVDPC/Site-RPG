@@ -145,3 +145,85 @@ body {
   padding: 20px;
   border: 1px solid #333;
 }
+
+/* ===============================
+   CRIAÇÃO DE PERSONAGEM (CC)
+   =============================== */
+
+.cc-modal {
+  width: 520px;
+  max-height: 90vh;
+  overflow-y: auto;
+  background: #0f0f0f;
+  border: 1px solid #333;
+}
+
+.cc-step h2 {
+  margin-bottom: 15px;
+  border-bottom: 1px solid #222;
+  padding-bottom: 5px;
+}
+
+/* ATRIBUTOS */
+.cc-step .attribute {
+  display: grid;
+  grid-template-columns: 1fr auto auto auto;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.cc-step .attribute span {
+  font-size: 14px;
+}
+
+.cc-step .attribute button {
+  width: 28px;
+  height: 28px;
+  padding: 0;
+}
+
+/* ORIGEM / CLASSE */
+.cc-step .origin {
+  border: 1px solid #333;
+  padding: 10px;
+  margin-bottom: 8px;
+  cursor: pointer;
+  transition: background 0.2s, border 0.2s;
+}
+
+.cc-step .origin:hover {
+  background: #1a1a1a;
+}
+
+.cc-step .origin.selected {
+  border-color: #7b1e1e;
+  background: #1a0f0f;
+}
+
+/* TOQUES FINAIS */
+.cc-step input,
+.cc-step textarea {
+  width: 100%;
+  margin-bottom: 8px;
+  padding: 8px;
+  background: #0b0b0b;
+  color: #eaeaea;
+  border: 1px solid #333;
+}
+
+.cc-step textarea {
+  resize: vertical;
+  min-height: 60px;
+}
+
+/* BOTÕES */
+.modal-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.modal-actions button {
+  padding: 8px 14px;
+}
