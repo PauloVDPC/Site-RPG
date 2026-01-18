@@ -1,0 +1,109 @@
+.sheet-bars {
+  margin-top: 15px;
+}
+
+.sheet-bar {
+  margin-bottom: 12px;
+}
+
+.sheet-bar label {
+  display: block;
+  text-align: center;
+  font-size: 12px;
+  margin-bottom: 4px;
+}
+
+/* BASE */
+.bar-container {
+  position: relative;
+  padding: 6px;
+  overflow: hidden;
+  color: #fff;
+}
+
+/* FILL */
+.bar-fill {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  z-index: 0;
+  transition: width 0.2s ease;
+}
+
+/* CONTEÚDO */
+.bar-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* CONTROLES */
+.bar-controls {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.bar-controls.left { left: 8px; }
+.bar-controls.right { right: 8px; }
+
+.bar-controls button {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* VALOR */
+.bar-value {
+  display: flex;
+  gap: 6px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.bar-current {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+/* INPUT */
+.bar-edit-input {
+  width: 60px;
+  text-align: center;
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.25);
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  outline: none;
+}
+
+/* CORES */
+.bar-life { background: #b01c1c; }
+.bar-life .bar-fill { background: #c62828; }
+
+.bar-sanity { background: #8a2be2; }
+.bar-sanity .bar-fill { background: #8e24aa; }
+
+.bar-effort { background: #ff8c00; }
+.bar-effort .bar-fill { background: #fb8c00; }
+
+/* REMOVE SETINHAS */
+/* Chrome, Edge, Safari */
+.bar-edit-input::-webkit-outer-spin-button,
+.bar-edit-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+
+/* Firefox + padrão */
+.bar-edit-input {
+  -moz-appearance: textfield;
+  -webkit-appearance: none;
+  appearance: textfield;
+}

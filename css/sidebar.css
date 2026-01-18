@@ -1,0 +1,96 @@
+.sidebar {
+  width: 30%;
+  background: #111;
+  border-left: 1px solid #222;
+  display: flex;
+  flex-direction: column;
+}
+
+/* TABS */
+.tabs {
+  display: flex;
+}
+
+.tab {
+  flex: 1;
+  padding: 10px;
+  background: #111;
+  color: #aaa;
+  border: none;
+  cursor: pointer;
+}
+
+.tab.active {
+  background: #1a1a1a;
+  color: #fff;
+}
+
+.tab-content {
+  display: none;
+  flex: 1;
+  padding: 10px;
+}
+
+.tab-content.active {
+  display: flex;
+  flex-direction: column;
+}
+
+/* CHAT */
+.chat-log {
+  flex: 1;
+  border: 1px solid #222;
+  padding: 8px;
+  margin-bottom: 10px;
+  overflow-y: auto;
+  background: #0d0d0d;
+}
+
+
+
+/* ===============================
+   CHAT – ROLAGEM DE DADOS
+   =============================== */
+
+.chat-roll {
+  margin-bottom: 8px;
+  padding: 6px;
+  border: 1px solid #222;
+  background: #111;
+  font-size: 12px;
+}
+
+.chat-roll-header {
+  margin-bottom: 4px;
+  color: #ccc;
+}
+
+.chat-roll-attr {
+  margin-bottom: 6px;
+  opacity: 0.85;
+}
+
+.chat-roll-dice {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.roll {
+  padding: 4px 6px;
+  border: 1px solid #333;
+  border-radius: 4px;
+  background: transparent;
+}
+
+.roll.die-max {
+  background: #153d1a;
+  border-color: #1f7a2e;
+  color: #b6ffcb;
+}
+
+.roll.die-min {
+  background: #3a1414;
+  border-color: #7a1f1f;
+  color: #ffb6b6;
+}

@@ -1,0 +1,87 @@
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.cc-modal {
+  width: 520px;
+  height: 520px;
+  padding: 20px;
+  background: #0f0f0f;
+  border: 1px solid #333;
+  position: relative;
+  overflow: hidden;
+}
+
+.cc-step {
+  position: absolute;
+  inset: 20px;
+  display: none;
+}
+
+.cc-step.active {
+  display: block;
+}
+
+.cc-step h2 {
+  margin-bottom: 15px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #222;
+}
+
+/* ATRIBUTOS */
+.attribute {
+  display: grid;
+  grid-template-columns: 1fr auto auto auto;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+/* ORIGEM / CLASSE */
+.origin {
+  border: 1px solid #333;
+  padding: 10px;
+  margin-bottom: 8px;
+  cursor: pointer;
+}
+
+.origin.selected {
+  border-color: #7b1e1e;
+  background: #1a0f0f;
+}
+
+/* INPUTS */
+input,
+textarea {
+  width: 100%;
+  margin-bottom: 8px;
+  padding: 8px;
+  background: #0b0b0b;
+  color: #eaeaea;
+  border: 1px solid #333;
+}
+
+textarea {
+  resize: none;
+  height: 60px;
+}
+
+/* BOTÕES */
+.modal-actions {
+  position: absolute;
+  bottom: 0;
+  inset-inline: 0;
+  padding-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  background: linear-gradient(transparent, #0f0f0f);
+}

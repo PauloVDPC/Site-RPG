@@ -1,0 +1,423 @@
+.sheet-window {
+  position: absolute;
+  top: 80px;
+  left: 80px;
+
+  /* 🔒 TAMANHO MÍNIMO FUNCIONAL */
+  min-width: 750px;
+  min-height: 620px;
+
+  /* 🖥️ NUNCA PASSA DA TELA */
+  max-width: calc(100vw - 32px);
+  max-height: calc(100vh - 32px);
+
+  /* tamanho inicial */
+  width: 460px;
+  height: 700px;
+
+  display: flex;
+  flex-direction: column;
+
+  background: #0f0f0f;
+  border: 1px solid #333;
+  z-index: 2000;
+
+  resize: both;
+  overflow: hidden; /* scroll é interno */
+}
+
+.sheet-header {
+  background: #111;
+  padding: 8px;
+  cursor: move;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #222;
+}
+
+.sheet-header button {
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+}
+
+.sheet-body {
+  flex: 1;
+  padding: 10px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* COLUNAS */
+.sheet-content {
+  display: flex;          /* 🔑 ISSO resolve tudo */
+  gap: 12px;
+  min-width: 700px;       /* compatível com seu min-width da ficha */
+}
+
+.sheet-left {
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+}
+
+.sheet-right {
+  width: 55%;
+  padding-left: 10px;
+  border-left: 1px solid #222;
+  color: #777;
+}
+
+/* ÁRVORE */
+.attributes-tree {
+  position: relative;
+  width: 260px;
+  height: 260px;
+  margin: 10px auto;
+  background: url("../assets/attributes-tree.png") no-repeat center;
+  background-size: contain;
+}
+
+.attr-node {
+  position: absolute;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.7);
+  border: 1px solid #aaa;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.attr-node span {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+/* POSIÇÕES */
+.attr-agilidade { top: 10%; left: 50%; transform: translateX(-50%); }
+.attr-forca { top: 42%; left: 8%; transform: translateY(-50%); }
+.attr-intelecto { top: 42%; right: 8%; transform: translateY(-50%); }
+.attr-presenca { bottom: 8%; left: 20%; }
+.attr-vigor { bottom: 8%; right: 20%; }
+
+/* ===============================
+   FICHA – HEX / PE / DESLOCAMENTO (ESTILO OFICIAL)
+   =============================== */
+
+.sheet-extra-stats {
+  display: flex;
+  justify-content: flex-end; /* tudo à direita */
+  gap: 12px;
+  margin: 10px 0;
+}
+
+.sheet-stat-box {
+  min-width: 90px;
+  padding: 6px 8px;
+  border: 1px solid #ccc;
+  background: #000;
+  color: #fff;
+  text-align: center;
+  font-size: 14px;
+}
+
+.sheet-stat-box strong {
+  display: block;
+  font-size: 18px;
+  margin-bottom: 2px;
+}
+
+.sheet-stat-label {
+  font-size: 10px;
+  opacity: 0.7;
+  letter-spacing: 1px;
+}
+
+/* seletor HEX */
+.hex-select {
+  width: 100%;
+  background: #000;
+  color: #fff;
+  border: none;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  outline: none;
+}
+
+/* ===============================
+   FICHA – DEFESA / BLOQUEIO / ESQUIVA
+   =============================== */
+
+.sheet-defense {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 12px 0;
+  padding: 8px;
+  border-top: 1px solid #222;
+  border-bottom: 1px solid #222;
+  background: #0b0b0b;
+}
+
+/* ESCUDO */
+.sheet-defense-shield {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 130px;
+}
+
+.sheet-defense-shield img {
+  width: 32px;
+  height: 32px;
+}
+
+.sheet-defense-main {
+  display: flex;
+  flex-direction: column;
+}
+
+.sheet-defense-main strong {
+  font-size: 18px;
+}
+
+.sheet-defense-formula {
+  font-size: 11px;
+  opacity: 0.7;
+}
+
+/* BLOQUEIO / ESQUIVA */
+.sheet-defense-side {
+  display: flex;
+  gap: 24px;
+}
+
+.sheet-defense-stat {
+  text-align: center;
+}
+
+.sheet-defense-stat strong {
+  display: block;
+  font-size: 18px;
+}
+
+.sheet-defense-stat span {
+  font-size: 11px;
+  opacity: 0.7;
+}
+
+/* EDITÁVEL */
+.def-edit {
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  width: 40px;
+  outline: none;
+}
+
+/* ===============================
+   FICHA – PROTEÇÃO / RESISTÊNCIAS / PROFICIÊNCIAS
+   =============================== */
+
+.sheet-notes {
+  margin-top: 10px;
+  padding: 8px 0;
+  font-size: 13px;
+}
+
+.sheet-note-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.sheet-note-label {
+  min-width: 110px;
+  opacity: 0.8;
+}
+
+.sheet-note-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #444;
+  color: #fff;
+  font-size: 13px;
+  outline: none;
+  padding: 2px 4px;
+}
+
+/* ===============================
+   FICHA – PERÍCIAS
+   =============================== */
+
+.sheet-skills {
+  font-size: 13px;
+}
+
+.sheet-skills h3 {
+  margin: 0 0 8px 0;
+  font-size: 14px;
+  border-bottom: 1px solid #333;
+  padding-bottom: 4px;
+}
+
+.skill-row {
+  display: grid;
+  grid-template-columns: 1fr 40px 28px 28px 28px;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 0;
+  border-bottom: 1px solid #222;
+}
+
+.skill-row:last-child {
+  border-bottom: none;
+}
+
+.skill-name {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.skill-attr {
+  text-align: center;
+  font-weight: bold;
+  opacity: 0.85;
+}
+
+.skill-check {
+  text-align: center;
+}
+
+.skill-check input {
+  cursor: pointer;
+}
+
+/* ===============================
+   FICHA – EDIÇÃO DE ATRIBUTOS
+   =============================== */
+
+.attr-edit {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #000;
+  border: 1px solid #aaa;
+  color: #fff;
+  font-size: 11px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.attr-edit.confirm {
+  background: #1a7f1a;
+  border-color: #1a7f1a;
+}
+
+.attr-input {
+  width: 28px;
+  text-align: center;
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  outline: none;
+}
+
+
+/* ===============================
+   BLOCO DE ATRIBUTOS (TRAVADO)
+   =============================== */
+
+.attributes-block {
+  border: 1px solid #333;
+  padding: 6px;
+  margin-bottom: 10px;
+}
+
+.attr-block-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  margin-bottom: 6px;
+  opacity: 0.8;
+}
+
+.attr-block-toggle {
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.attributes-block:not(.editing) .attr-edit {
+  display: none;
+}
+
+.attributes-block:not(.editing) .attr-node {
+  cursor: pointer;
+}
+
+.attributes-block.editing .attr-node {
+  cursor: default;
+}
+
+
+/* ===============================
+   INPUT NUMÉRICO (SEM SETINHAS / SEM BARRA)
+   =============================== */
+
+/* Chrome, Edge, Safari */
+.attr-input::-webkit-outer-spin-button,
+.attr-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+
+/* Firefox + compat */
+.attr-input {
+  -moz-appearance: textfield;
+  appearance: textfield; /* compatibilidade */
+}
+
+
+/* ===============================
+   BOTÃO MINIMIZAR FICHA
+   =============================== */
+
+.sheet-header-actions {
+  display: flex;
+  gap: 6px;
+}
+
+.sheet-minimize {
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font-size: 18px;
+  line-height: 1;
+  opacity: 0.8;
+}
+
+.sheet-minimize:hover {
+  opacity: 1;
+}

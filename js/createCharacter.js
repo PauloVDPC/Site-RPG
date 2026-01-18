@@ -1,7 +1,3 @@
-/* ===============================
-   CRIAÇÃO DE PERSONAGEM
-   =============================== */
-
 const atributosBase = {
   forca: 1,
   agilidade: 1,
@@ -15,8 +11,7 @@ let pontosDisponiveis = 4;
 let origemSelecionada = null;
 let classeSelecionada = null;
 
-/* ===== MODAL ===== */
-
+/* MODAL */
 function openCreateCharacter() {
   resetCreation();
   document.getElementById("create-character-modal").classList.remove("hidden");
@@ -28,33 +23,19 @@ function closeCreateCharacter() {
   document.getElementById("create-character-modal").classList.add("hidden");
 }
 
-/* ===== RESET ===== */
-
+/* RESET */
 function resetCreation() {
   atributos = { ...atributosBase };
   pontosDisponiveis = 4;
   origemSelecionada = null;
   classeSelecionada = null;
 
-  document.querySelectorAll(".origin").forEach(o =>
-    o.classList.remove("selected")
-  );
-
-  [
-    "char-name",
-    "player-name",
-    "appearance",
-    "personality",
-    "history",
-    "goal"
-  ].forEach(id => {
-    const el = document.getElementById(id);
-    if (el) el.value = "";
-  });
+  document.querySelectorAll(".origin").forEach(o => o.classList.remove("selected"));
+  ["char-name","player-name","appearance","personality","history","goal"]
+    .forEach(id => document.getElementById(id).value = "");
 }
 
-/* ===== ATRIBUTOS ===== */
-
+/* ATRIBUTOS */
 function changeAttr(attr, delta) {
   const atual = atributos[attr];
   const novo = atual + delta;
@@ -80,82 +61,56 @@ function updateUI() {
   for (const a in atributos) {
     document.getElementById(a).innerText = atributos[a];
   }
-
   document.getElementById("points").innerText = pontosDisponiveis;
-  document.getElementById("next-attributes").disabled =
-    pontosDisponiveis !== 0;
+  document.getElementById("next-attributes").disabled = pontosDisponiveis !== 0;
 }
 
-/* ===== ORIGEM ===== */
-
+/* ORIGEM / CLASSE */
 function selectOrigin(event, nome) {
   origemSelecionada = nome;
-
-  document
-    .querySelectorAll("#step-origin .origin")
-    .forEach(o => o.classList.remove("selected"));
-
+  document.querySelectorAll("#step-origin .origin").forEach(o => o.classList.remove("selected"));
   event.currentTarget.classList.add("selected");
   document.getElementById("next-origin").disabled = false;
 }
 
-/* ===== CLASSE ===== */
-
 function selectClass(event, nome) {
   classeSelecionada = nome;
-
-  document
-    .querySelectorAll("#step-class .origin")
-    .forEach(o => o.classList.remove("selected"));
-
+  document.querySelectorAll("#step-class .origin").forEach(o => o.classList.remove("selected"));
   event.currentTarget.classList.add("selected");
   document.getElementById("next-class").disabled = false;
 }
 
-/* ===== NAVEGAÇÃO ===== */
-
+/* NAVEGAÇÃO */
 function showStep(step) {
-  ["attributes", "origin", "class", "final"].forEach(s =>
-    document.getElementById(`step-${s}`).classList.add("hidden")
-  );
-
-  document.getElementById(`step-${step}`).classList.remove("hidden");
+  document.querySelectorAll(".cc-step").forEach(s => s.classList.remove("active"));
+  document.getElementById(`step-${step}`).classList.add("active");
 }
 
-function goToOrigin() { showStep("origin"); }
-function goToClass() { showStep("class"); }
-function goToFinal() { showStep("final"); }
+function goToOrigin(){ showStep("origin"); }
+function goToClass(){ showStep("class"); }
+function goToFinal(){ showStep("final"); }
+function backToAttributes(){ showStep("attributes"); }
+function backToOrigin(){ showStep("origin"); }
+function backToClass(){ showStep("class"); }
 
-function backToAttributes() { showStep("attributes"); }
-function backToOrigin() { showStep("origin"); }
-function backToClass() { showStep("class"); }
-
-/* ===== FINALIZAÇÃO ===== */
-
+/* FINALIZAÇÃO */
 function finishCharacter() {
   const nome = document.getElementById("char-name").value.trim();
-  if (!nome) {
-    alert("Informe o nome do personagem");
-    return;
-  }
+  if (!nome) return alert("Informe o nome do personagem");
 
   const personagem = {
     id: Date.now(),
     nome,
     jogador: document.getElementById("player-name").value,
-    atributos: { ...atributos },
+    atributos,
     origem: origemSelecionada,
-    classe: classeSelecionada,
-    aparencia: document.getElementById("appearance").value,
-    personalidade: document.getElementById("personality").value,
-    historico: document.getElementById("history").value,
-    objetivo: document.getElementById("goal").value
+    classe: classeSelecionada
   };
 
   const lista = JSON.parse(localStorage.getItem("personagens")) || [];
   lista.push(personagem);
   localStorage.setItem("personagens", JSON.stringify(lista));
 
-  addCharacterToSidebar(personagem.nome);
+  addCharacterToSidebar(personagem.nome, personagem.id);
   closeCreateCharacter();
 }

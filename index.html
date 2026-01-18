@@ -3,7 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <title>Ordem Paranormal</title>
-  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/game.css">
+  <link rel="stylesheet" href="css/sidebar.css">
+  <link rel="stylesheet" href="css/character.css">
+  <link rel="stylesheet" href="css/sheet.css">
+  <link rel="stylesheet" href="css/bars.css">
+  <link rel="stylesheet" href="css/windowManager.css">
+
 </head>
 <body>
 
@@ -52,7 +59,7 @@
     <div class="modal-content cc-modal">
 
       <!-- ===== ATRIBUTOS ===== -->
-      <div id="step-attributes" class="cc-step">
+      <div id="step-attributes" class="cc-step active">
         <h2>Atributos (1/4)</h2>
         <p>Pontos disponíveis: <strong id="points">4</strong></p>
 
@@ -69,7 +76,7 @@
       </div>
 
       <!-- ===== ORIGEM ===== -->
-      <div id="step-origin" class="cc-step hidden">
+      <div id="step-origin" class="cc-step active">
         <h2>Origem (2/4)</h2>
 
         <div class="origin" onclick="selectOrigin(event,'Acadêmico')">Acadêmico</div>
@@ -83,7 +90,7 @@
       </div>
 
       <!-- ===== CLASSE ===== -->
-      <div id="step-class" class="cc-step hidden">
+      <div id="step-class" class="cc-step active">
         <h2>Classe (3/4)</h2>
 
         <div class="origin" onclick="selectClass(event,'Combatente')">Combatente</div>
@@ -97,7 +104,7 @@
       </div>
 
       <!-- ===== TOQUES FINAIS ===== -->
-      <div id="step-final" class="cc-step hidden">
+      <div id="step-final" class="cc-step active">
         <h2>Toques Finais (4/4)</h2>
 
         <input id="char-name" placeholder="Nome do Personagem" />
@@ -119,7 +126,14 @@
 
   <!-- ===== SCRIPTS ===== -->
   <script src="js/app.js"></script>
+  <script src="js/sidebar.js"></script>
   <script src="js/createCharacter.js"></script>
+  <script src="js/sheet.js"></script>
+  <script src="js/bars.js"></script>
+  <script src="js/windowManager.js"></script>
+
+  <!-- ===== JANELA DE FICHA ===== -->
+  <div id="sheet-container"></div>
 
 </body>
 </html>
