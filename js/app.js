@@ -1,7 +1,6 @@
 function openTab(tab) {
   document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
   document.querySelectorAll(".tab-content").forEach(c => c.classList.remove("active"));
-
   document.querySelector(`[onclick="openTab('${tab}')"]`).classList.add("active");
   document.getElementById(tab).classList.add("active");
 }
@@ -9,24 +8,24 @@ function openTab(tab) {
 /* ===== CHAT ===== */
 function sendMessage(event) {
   if (event.key !== "Enter") return;
-
   const input = event.target;
-  const msg = input.value.trim();
-  if (!msg) return;
+  if (!input.value.trim()) return;
 
-  const log = document.getElementById("chat-log");
   const div = document.createElement("div");
-  div.textContent = msg;
-  log.appendChild(div);
-
+  div.textContent = input.value;
+  document.getElementById("chat-log").appendChild(div);
   input.value = "";
-  log.scrollTop = log.scrollHeight;
 }
 
 /* ===== PERSONAGENS ===== */
-function addCharacterToList(name) {
-  const list = document.getElementById("character-list");
+function addCharacterToSidebar(name) {
   const li = document.createElement("li");
   li.textContent = name;
-  list.appendChild(li);
+  document.getElementById("character-list").appendChild(li);
 }
+
+/* ===== CARREGAR AO INICIAR ===== */
+window.onload = () => {
+  const lista = JSON.parse(localStorage.getItem("personagens")) || [];
+  lista.forEach(p => addCharacterToSidebar(p.nome));
+};

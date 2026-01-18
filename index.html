@@ -12,20 +12,17 @@
     <h1>ORDEM PARANORMAL</h1>
   </header>
 
-  <!-- ===== CONTEÚDO PRINCIPAL ===== -->
+  <!-- ===== CONTEÚDO ===== -->
   <div class="layout">
 
-    <!-- ===== GAMEPLAY (70%) ===== -->
+    <!-- ===== GAMEPLAY ===== -->
     <div class="game-area">
-      <div class="grid">
-        <!-- grid fake por enquanto -->
-      </div>
+      <div class="grid"></div>
     </div>
 
-    <!-- ===== SIDEBAR (30%) ===== -->
+    <!-- ===== SIDEBAR ===== -->
     <aside class="sidebar">
 
-      <!-- ABAS -->
       <div class="tabs">
         <button class="tab active" onclick="openTab('chat')">Chat</button>
         <button class="tab" onclick="openTab('characters')">Personagens</button>
@@ -33,12 +30,8 @@
 
       <!-- CHAT -->
       <div id="chat" class="tab-content active">
-        <div class="chat-log" id="chat-log">
-          <div class="system">🎲 Sistema iniciado</div>
-        </div>
-
+        <div class="chat-log" id="chat-log"></div>
         <input
-          type="text"
           id="chat-input"
           placeholder="Digite uma mensagem..."
           onkeydown="sendMessage(event)"
@@ -48,26 +41,84 @@
       <!-- PERSONAGENS -->
       <div id="characters" class="tab-content">
         <button onclick="openCreateCharacter()">➕ Criar Personagem</button>
-
         <ul id="character-list"></ul>
       </div>
 
     </aside>
   </div>
 
-  <!-- ===== MODAL DE CRIAÇÃO (já existente) ===== -->
+  <!-- ===== MODAL CRIAÇÃO ===== -->
   <div id="create-character-modal" class="modal hidden">
     <div class="modal-content">
-      <!-- (mantém TODO o fluxo que já fizemos) -->
-      <h2>🧬 Criação de Personagem</h2>
-      <p>Fluxo já implementado</p>
-      <button onclick="closeCreateCharacter()">Fechar</button>
+
+      <!-- ===== ATRIBUTOS ===== -->
+      <div id="step-attributes">
+        <h2>Atributos (1/4)</h2>
+        <p>Pontos disponíveis: <strong id="points">4</strong></p>
+
+        <div class="attribute"><span>Força</span><button onclick="changeAttr('forca',-1)">−</button><span id="forca">1</span><button onclick="changeAttr('forca',1)">+</button></div>
+        <div class="attribute"><span>Agilidade</span><button onclick="changeAttr('agilidade',-1)">−</button><span id="agilidade">1</span><button onclick="changeAttr('agilidade',1)">+</button></div>
+        <div class="attribute"><span>Intelecto</span><button onclick="changeAttr('intelecto',-1)">−</button><span id="intelecto">1</span><button onclick="changeAttr('intelecto',1)">+</button></div>
+        <div class="attribute"><span>Presença</span><button onclick="changeAttr('presenca',-1)">−</button><span id="presenca">1</span><button onclick="changeAttr('presenca',1)">+</button></div>
+        <div class="attribute"><span>Vigor</span><button onclick="changeAttr('vigor',-1)">−</button><span id="vigor">1</span><button onclick="changeAttr('vigor',1)">+</button></div>
+
+        <div class="modal-actions">
+          <button id="next-attributes" disabled onclick="goToOrigin()">Próximo</button>
+          <button onclick="closeCreateCharacter()">Cancelar</button>
+        </div>
+      </div>
+
+      <!-- ===== ORIGEM ===== -->
+      <div id="step-origin" class="hidden">
+        <h2>Origem (2/4)</h2>
+
+        <div class="origin" onclick="selectOrigin(event,'Acadêmico')">Acadêmico</div>
+        <div class="origin" onclick="selectOrigin(event,'Agente de Saúde')">Agente de Saúde</div>
+        <div class="origin" onclick="selectOrigin(event,'Amnésico')">Amnésico</div>
+
+        <div class="modal-actions">
+          <button id="next-origin" disabled onclick="goToClass()">Próximo</button>
+          <button onclick="backToAttributes()">Voltar</button>
+        </div>
+      </div>
+
+      <!-- ===== CLASSE ===== -->
+      <div id="step-class" class="hidden">
+        <h2>Classe (3/4)</h2>
+
+        <div class="origin" onclick="selectClass(event,'Combatente')">Combatente</div>
+        <div class="origin" onclick="selectClass(event,'Especialista')">Especialista</div>
+        <div class="origin" onclick="selectClass(event,'Ocultista')">Ocultista</div>
+
+        <div class="modal-actions">
+          <button id="next-class" disabled onclick="goToFinal()">Próximo</button>
+          <button onclick="backToOrigin()">Voltar</button>
+        </div>
+      </div>
+
+      <!-- ===== TOQUES FINAIS ===== -->
+      <div id="step-final" class="hidden">
+        <h2>Toques Finais (4/4)</h2>
+
+        <input id="char-name" placeholder="Nome do Personagem" />
+        <input id="player-name" placeholder="Nome do Jogador" />
+
+        <textarea id="appearance" placeholder="Aparência"></textarea>
+        <textarea id="personality" placeholder="Personalidade"></textarea>
+        <textarea id="history" placeholder="Histórico"></textarea>
+        <textarea id="goal" placeholder="Objetivo"></textarea>
+
+        <div class="modal-actions">
+          <button onclick="finishCharacter()">Finalizar</button>
+          <button onclick="backToClass()">Voltar</button>
+        </div>
+      </div>
+
     </div>
   </div>
 
   <!-- ===== SCRIPTS ===== -->
   <script src="js/app.js"></script>
-  <script src="js/auth.js"></script>
   <script src="js/attributes.js"></script>
 
 </body>
